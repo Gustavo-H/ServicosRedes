@@ -195,6 +195,7 @@ function insert_persistent_config() {
         echo "Configuracoes aplicadas com sucesso!"
     else
         echo "Ocorreu um erro ao tentar aplicar as alteracoes!"
+    fi
 }
 
 
