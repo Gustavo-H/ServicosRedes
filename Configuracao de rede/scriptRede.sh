@@ -190,11 +190,11 @@ function insert_persistent_config() {
 
     cat $config_file
     netplan generate
-    if [ ! $? = 0]; then
+    if [ ! $? = 0 ]; then
         echo "Ocorreu um erro ao tentar aplicar as alteracoes!"
     fi
     netplan apply
-    if [ $? = 0]; then
+    if [ $? = 0 ]; then
         echo "Configuracoes aplicadas com sucesso!"
     else
         echo "Ocorreu um erro ao tentar aplicar as alteracoes!"
