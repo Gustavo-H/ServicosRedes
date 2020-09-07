@@ -185,13 +185,16 @@ function insert_persistent_config() {
         echo  "        $interface_name:" >> /etc/netplan/config.yaml
         echo  "            addresses: [$ip]" >> /etc/netplan/config.yaml
         echo  "            dhcp4: false" >> /etc/netplan/config.yaml
-        echo  "            namesservers: [$dns1,$dns2]" >> /etc/netplan/config.yaml
+        echo  "            nameservers: [$dns1,$dns2]" >> /etc/netplan/config.yaml
     fi
 
     cat $config_file
     netplan generate
+    if [ ! $? = 0]; then
+        echo "Ocorreu um erro ao tentar aplicar as alteracoes!"
+    fi
     netplan apply
-    if [ $? = 0]
+    if [ $? = 0]; then
         echo "Configuracoes aplicadas com sucesso!"
     else
         echo "Ocorreu um erro ao tentar aplicar as alteracoes!"
